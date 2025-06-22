@@ -55,6 +55,25 @@ source setup_env.sh
 python3 basic_pipelines/detection.py --input rpi
 
 ```
+## For starting the application on Boot
+~/.config/autostart/person-detection.desktop
+
+[Desktop Entry]
+Type=Application
+Name=Person Detection
+Exec=sh -c "sleep 10 && x-terminal-emulator -e bash -c 'cd /home/pi/hailo-rpi5-examples && source setup_env.sh && python3
+basic_pipelines/detection.py --input rpi'"
+
+sudo reboot
+
+## For disabling the application running on Boot
+nano ~/.config/AutoStart/person-detection.desktop
+
+comment out line:
+#Exec=sh -c "sleep 10 && x-terminal-emulator -e bash -c 'cd /home/pi/hailo-rpi5-examples && source setup_env.sh && python3 basic_pipelines/detection.py --input rpi'"
+
+ctrl+X, y, enter
+
 ## Note
 Ensure that:
 
