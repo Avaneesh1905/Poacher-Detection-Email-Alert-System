@@ -29,9 +29,9 @@ This project detects people in camera feeds using Raspberry Pi 5 and the Hailo-8
 - GPIO support for LEDs/alarms
 - Runs autonomously on boot
 
-## 🛠️ How to Set Up
+## How to Set Up
 
-### 📦 Software Setup on Raspberry Pi:
+### Software Setup on Raspberry Pi:
 
 ```bash
 # Clone the Hailo Pi example repository
