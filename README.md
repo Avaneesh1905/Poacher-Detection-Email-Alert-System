@@ -80,7 +80,7 @@ sudo reboot
 ```bash
 nano ~/.config/AutoStart/person-detection.desktop
 
-comment out line:
+#comment out line:
 #Exec=sh -c "sleep 10 && x-terminal-emulator -e bash -c 'cd /home/pi/hailo-rpi5-examples && source setup_env.sh && python3 basic_pipelines/detection.py --input rpi'"
 
 ```
