@@ -38,7 +38,22 @@ This project detects people in camera feeds using Raspberry Pi 5 and the Hailo-8
 ### Software Setup on Raspberry Pi:
 
 ```bash
-# Open Terminal and Clone the Hailo Pi example repository
+# Update your Raspberry Pi OS packages
+sudo apt update && sudo apt upgrade -y
+
+# Install required dependencies
+sudo apt install python3-pip python3-opencv python3-numpy git -y
+
+# Enable camera module and configure the Raspberry Pi Hardware if connected for the first time
+# For camera - Interface Options → Camera → Enable
+sudo raspi-config
+
+# Then reboot Pi
+sudo reboot
+
+# Install Hailo TAPPAS SDK - Follow the instructions provided by Hailo for installing the TAPPAS SDK on Raspberry Pi 5 with the Hailo-8 AI Module
+
+# After reboot and SDK install, open Terminal and Clone the Hailo Pi example repository
 git clone https://github.com/hailo-ai/hailo-rpi5-examples.git
 
 # Navigate into the folder
@@ -89,8 +104,18 @@ ctrl+X, y, Enter
 ## Note
 Ensure that:
 
-1. App password is enabled on your Gmail account for SMTP.
+1. App password is enabled on your Gmail account for SMTP (NOT Normal login password).
 
 2. Email credentials are updated in the script.
 
 3. GPIO pin 27 is connected to an LED/buzzer for alerts.
+
+4. You have proper internet connection on RPi as it's required for sending E-Mails
+
+## Output to expect
+1. Detect people with >96% confidence
+2. Wait 2 seconds for confirmation
+3. Take a snapshot of the frame and save it as jpg file in alerts folder
+4. Sends alert email with an image attachment
+5. Triggers GPIO pin 27 HIGH for LEDs, alarms, etc.
+6. Enters 10-minute cooldown period before allowing new alerts
