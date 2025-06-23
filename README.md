@@ -30,25 +30,34 @@ This project detects people in camera feeds using Raspberry Pi 5 and the Hailo-8
 - Runs autonomously on boot
 
 ## How to Set Up
+### Hardware Setup on Raspberry Pi:
+
+1. Connect Raspberry Pi 5 with Hailo AI kit and a camera module.
+2. Flash Raspberry Pi OS and connect RPi to desktop monitor (optional) or access via RealVNC from a laptop
 
 ### Software Setup on Raspberry Pi:
 
 ```bash
-# Clone the Hailo Pi example repository
+# Open Terminal and Clone the Hailo Pi example repository
 git clone https://github.com/hailo-ai/hailo-rpi5-examples.git
 
+# Navigate into the folder
 cd hailo-rpi5-examples
 
-# Create alerts folder
+# Create a new folder to store snapshots
 mkdir alerts
 
+# Navigate to the detection pipeline
 cd basic_pipelines
 
-# Edit detection.py and paste your custom detection code
+# Open the detection script and paste the detection code from this project (detection.py) into that file
+# Modify as per use case and make sure to update the sender/receiver E-Mails and authenticate your own 16 letter App password
 nano detection.py
 
-# Go back to root folder and activate the environment
+# Go back to root folder
 cd ..
+
+# Activate the environment
 source setup_env.sh
 
 # Run the detection program using Raspberry Pi camera
@@ -72,7 +81,7 @@ nano ~/.config/AutoStart/person-detection.desktop
 comment out line:
 #Exec=sh -c "sleep 10 && x-terminal-emulator -e bash -c 'cd /home/pi/hailo-rpi5-examples && source setup_env.sh && python3 basic_pipelines/detection.py --input rpi'"
 
-ctrl+X, y, enter
+ctrl+X, y, Enter
 
 ## Note
 Ensure that:
